@@ -10,22 +10,27 @@
         <div class="row px-5">
             <h6>BROWSE AND READ THE LATEST STUFF</h6>
             <h4>Latest Stories</h4>
-            
+    
             {% for post in posts %}
                 <div class="col-md-4 mb-4 pt-3">
-                    <article class="post p-3 shadow">
+                    <article class="post p-3 shadow" style="height: 350px; display: flex; flex-direction: column;">
                         <h4>{{ post.title }}</h4>
                         <div class="py-3">
                             <time class="date">
-                            {{ post.published_date }}
+                                {{ post.published_date }}
                             </time>
                         </div>
                         <p class="text-danger text-decoration-none">____________</p>
-                        <p>{{ post.text|linebreaksbr }}</p>
-                        <h6><a href="{% url 'post_detail' pk=post.pk %}" class="text-danger text-decoration-none">READ MORE</a></h6>
+                        <p style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; margin: 0;">
+                            {{ post.text|linebreaksbr }}
+                        </p>                        
+                        <h6 class="pt-3">
+                            <a href="{% url 'new_detail' pk=post.pk %}" class="text-danger">READ MORE</a>
+                        </h6>
                     </article>
                 </div>
             {% endfor %}
         </div>
-    </main>   
+    </main>
+      
 {% endblock %}  

@@ -1,0 +1,15 @@
+{% extends 'new/base.html' %}
+
+{% block content %}
+    <article class="post">
+        <div class="container px-5 py-5">
+            {% if post.published_date %}
+                <time class="date d-block text-end">
+                    {{ post.published_date }}
+                </time>
+            {% endif %} 
+            <h2 class="pb-3">{{ post.title }}</h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+    </article>
+{% endblock %}

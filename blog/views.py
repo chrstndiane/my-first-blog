@@ -14,3 +14,7 @@ def post_detail(request, pk):
 def new_blog(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'new/new_blog.html', {'posts': posts})
+
+def new_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'new/new_detail.html', {'post': post})
